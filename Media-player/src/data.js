@@ -39,7 +39,7 @@ export const data = [
     id: 7,
     artist: "The Pixies",
     song: "Where Is My Mind",
-    img: "https://picsum.photos/200/300",
+    img: "https://picsum.photos/365",
   },
   {
     id: 8,

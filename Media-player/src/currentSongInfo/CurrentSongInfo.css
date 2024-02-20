@@ -1,0 +1,35 @@
+.current-song-info{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.current-song-info span {
+    font-size: 2rem;
+}
+
+.current-song-info .artist{
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: .2rem;
+}
+
+.current-song-info .song {
+    font-size: 1.7rem;
+}
+
+@media screen and (max-width: 768px){
+.current-song-info span {
+        font-size: 2rem;
+    }
+
+    .current-song-info .artist{
+        font-size: 1.5rem;
+    }
+
+    .current-song-info .song {
+        font-size: 1.2rem;
+    }
+
+}

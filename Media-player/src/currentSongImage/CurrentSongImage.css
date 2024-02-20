@@ -1,0 +1,17 @@
+.current-song-image  {
+    max-width: 200px;
+    margin-bottom: 2rem;
+}
+
+.current-song-image .current-img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 768px){
+    .current-song-image{
+        max-width: 75px;
+        margin-bottom: 1rem;
+    }
+
+}

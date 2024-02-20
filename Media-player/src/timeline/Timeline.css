@@ -1,0 +1,29 @@
+.timeline {
+    width: 100%;
+    margin: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeline .form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-range {
+    width: 100%;
+}
+
+.timeline span {
+    font-size: 1.2rem;
+    margin: 0 .5rem;
+}
+
+@media screen and (max-width: 768px){
+    .timeline {
+        margin: 1rem;
+    }
+}
