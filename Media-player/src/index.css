@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #aeaea6;;
+}
+
+span {
+  font-size: 2rem;
+  color: #aeaea6;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+@media screen and (max-width: 768px){
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+}

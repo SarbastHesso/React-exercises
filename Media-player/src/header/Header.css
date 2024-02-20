@@ -1,0 +1,12 @@
+.header {
+    width: 100%;
+    background-color: #00000075;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.header span {
+    font-size: 2rem;
+    color: #ffffff;
+}
+

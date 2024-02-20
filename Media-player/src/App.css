@@ -1,0 +1,36 @@
+.app {
+  background: #060606;
+  background-image: url("./assets/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 8px 5px #000000;
+}
+
+.sections-container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: 100vh;
+    margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px){
+    .container {
+      width: 90%;
+      box-shadow: none;
+    }
+    .sections-container {
+      width: 100%;
+      flex-direction: column;
+    }
+}
