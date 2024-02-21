@@ -1,0 +1,42 @@
+@use "../abstracts/colors.scss" as *;
+
+.card {
+    background-color: $russianGreen;
+    border-radius: .5rem;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    .title-rating-wrapper {
+        padding: 1rem 1rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .title {
+            font-size: 1.7rem;
+        }
+        .rating {
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: $vermillion;
+        }
+    }
+    .genre {
+        padding: .5rem 1rem;
+        text-align: end;
+        span {
+        font-size: 1.5rem;
+        }
+    }
+
+    .description-wrapper {
+        padding: 1rem;
+        background-color: $light;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .description {
+            font-size: 1.3rem; 
+            color: $dark;
+        }
+    }
+
+}

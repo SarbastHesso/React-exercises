@@ -1,0 +1,9 @@
+// --base--
+@use "./base/global.scss";
+
+// --components-style-- 
+@use "./components-style/app.scss";
+@use "./components-style/header.scss";
+@use "./pages/moviesList.scss";
+@use "./components-style/card.scss";
+@use "./pages/addForm.scss";
