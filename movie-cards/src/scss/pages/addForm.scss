@@ -1,1 +1,77 @@
 @use "../abstracts/colors.scss" as *;
+
+.add-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    box-shadow: 0 0 10px 1px $russianGreen;
+    border-radius: .5rem;
+    max-width: 600px;
+    margin: 4rem auto 0;
+    .form-group {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+        label {
+            font-size: 1.2rem;
+        }
+        input, select, textarea {
+            padding: .5rem 1rem;
+            font-size: 1rem;
+            border-radius: .5rem;
+            border: none;
+            outline: none;
+        }
+        .rating-wrapper {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: 1rem;
+            #rating {
+                width: 100%;
+            }
+        }
+        #genre {
+            option {
+                font-size: 1rem;
+            }
+        }
+        #description {
+            height: 150px; 
+            resize: none;
+        }
+    }
+    .btns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        button {
+            border: none;
+            outline: none;
+            width: 100px;
+            padding: .5rem 1rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: .2rem;
+            margin-top: 1rem;
+            color: $extraLight;
+            opacity: .8;
+        }
+        button:hover {
+            opacity: 1;
+        }
+        .add-btn {
+            background-color: $russianGreen;
+        }
+        .clear-btn {
+            background-color: $vermillion;
+        }
+    }
+}
