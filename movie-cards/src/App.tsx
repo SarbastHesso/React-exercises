@@ -1,7 +1,7 @@
 import Header from "./components/Header"
 import AddForm from "./pages/AddForm"
 import MoviesList from "./pages/MoviesList"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import {IMovie} from './interfaces';
 import { useState } from "react";
 

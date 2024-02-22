@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { IMovie } from '../interfaces';
 
 interface IMovieGenre {
@@ -12,6 +13,9 @@ interface IAddFormProps {
 
 
 const AddForm: React.FC<IAddFormProps> = ({addMovie}) => {
+
+    const navigate = useNavigate();
+
   const genreCategories: IMovieGenre[] = [
     { id: 1, name: "drama" },
     { id: 2, name: "comedy" },
@@ -22,8 +26,8 @@ const AddForm: React.FC<IAddFormProps> = ({addMovie}) => {
   ];
 
   const [movieTitle, setMovieTitle] = useState<string>("");
-  const [movieRating, setMovieRating] = useState<string>("0");
-  const [movieGenre, setmovieGenre] = useState<string>("");
+  const [movieRating, setMovieRating] = useState<string>("3");
+  const [movieGenre, setmovieGenre] = useState<string>("Drama");
   const [movieDescription, setMovieDescription] = useState<string>("");
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,14 +47,24 @@ const AddForm: React.FC<IAddFormProps> = ({addMovie}) => {
 
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const movie:IMovie = {
-        id: Date.now(),
-        title: movieTitle,
-        rating: movieRating,
-        genre: movieGenre,
-        description: movieDescription
+    if (movieTitle !== '' && movieGenre !== '' && movieDescription !== ''){
+        const movie: IMovie = {
+          id: Date.now(),
+          title: movieTitle,
+          rating: movieRating,
+          genre: movieGenre,
+          description: movieDescription,
+        };
+        addMovie(movie);
+        navigate('/');
     }
-    addMovie(movie)
+  };
+
+  const handleClearForm = () => {
+    setMovieTitle("");
+    setMovieRating("3");
+    setmovieGenre("Drama");
+    setMovieDescription("");
   };
 
   return (
@@ -107,7 +121,7 @@ const AddForm: React.FC<IAddFormProps> = ({addMovie}) => {
       </div>
       <div className="btns">
         <button className="add-btn">ADD</button>
-        <button className="clear-btn">CLEAR</button>
+        <button className="clear-btn" onClick={handleClearForm}>CLEAR</button>
       </div>
     </form>
   );

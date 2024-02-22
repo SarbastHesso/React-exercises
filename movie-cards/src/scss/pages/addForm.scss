@@ -77,3 +77,12 @@
         }
     }
 }
+
+@media screen  and (max-width: 768px){
+    .add-form {
+        .form-group {
+            grid-template-columns: 1fr;
+            gap: .3rem;
+        }
+    }
+}

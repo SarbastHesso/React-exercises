@@ -23,3 +23,4 @@ const Card: React.FC<ICardProps> = ({ movie }) => {
 };
 
 export default Card;
+
