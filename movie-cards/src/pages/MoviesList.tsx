@@ -1,17 +1,18 @@
 import Card from "../components/Card"
+import { IMovie } from "../interfaces";
 
-const MoviesList = () => {
+interface IMoviesListProps{
+  movies: IMovie[];
+}
+
+const MoviesList: React.FC<IMoviesListProps> = ({movies}) => {
   return (
     <div className="movies-list">
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+      {movies.map((movie) => {
+        return <Card key={movie.id} movie={movie} />;
+      })}
     </div>
-  )
-}
+  );
+};
 
 export default MoviesList

@@ -34,9 +34,11 @@
             font-size: 1rem;
             #rating {
                 width: 100%;
+                padding: .5rem 0;
             }
         }
         #genre {
+            text-transform: capitalize;
             option {
                 font-size: 1rem;
             }
