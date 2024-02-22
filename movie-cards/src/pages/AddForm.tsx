@@ -1,46 +1,57 @@
 import { useState } from 'react';
+import { IMovie } from '../interfaces';
 
 interface IMovieGenre {
     id: number;
     name: string;
 }
 
-const AddForm:React.FC = () => {
+interface IAddFormProps {
+    addMovie: (movie: IMovie) => void
+}
 
-    const genreCategories:IMovieGenre [] = [
-        {id: 1, name: 'drama'},
-        {id: 2, name: 'comedy'},
-        {id: 3, name: 'fantasy'},
-        {id: 4, name: 'horror'},
-        {id: 5, name: 'romance'},
-        {id: 6, name: 'action'},
-    ]
 
-    const [movieTitle, setMovieTitle] = useState<string>('');
-    const [movieRating, setMovieRating] = useState<string>('0');
-    const [movieGenre, setmovieGenre] = useState<string>('');
-    const [movieDescription, setMovieDescription] = useState<string>('');
+const AddForm: React.FC<IAddFormProps> = ({addMovie}) => {
+  const genreCategories: IMovieGenre[] = [
+    { id: 1, name: "drama" },
+    { id: 2, name: "comedy" },
+    { id: 3, name: "fantasy" },
+    { id: 4, name: "horror" },
+    { id: 5, name: "romance" },
+    { id: 6, name: "action" },
+  ];
 
-    const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setMovieTitle(e.target.value);
-    };
-    const handleChangeRating = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setMovieRating(e.target.value);
-    };
-    const handleChangeGenre = (e: React.ChangeEvent<HTMLSelectElement>) => {
-      setmovieGenre(e.target.value);
-    };
-    const handleChangeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setMovieDescription(e.target.value);
-    };
+  const [movieTitle, setMovieTitle] = useState<string>("");
+  const [movieRating, setMovieRating] = useState<string>("0");
+  const [movieGenre, setmovieGenre] = useState<string>("");
+  const [movieDescription, setMovieDescription] = useState<string>("");
 
-    const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      console.log(movieTitle);
-      console.log(movieRating);
-      console.log(movieGenre);
-      console.log(movieDescription);
-    };
+  const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMovieTitle(e.target.value);
+  };
+  const handleChangeRating = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMovieRating(e.target.value);
+  };
+  const handleChangeGenre = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setmovieGenre(e.target.value);
+  };
+  const handleChangeDescription = (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setMovieDescription(e.target.value);
+  };
+
+  const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const movie:IMovie = {
+        id: Date.now(),
+        title: movieTitle,
+        rating: movieRating,
+        genre: movieGenre,
+        description: movieDescription
+    }
+    addMovie(movie)
+  };
 
   return (
     <form className="add-form" onSubmit={handleSubmitForm}>
@@ -78,28 +89,21 @@ const AddForm:React.FC = () => {
           value={movieGenre}
           onChange={handleChangeGenre}
         >
-          <option value={genreCategories[0].name}>
-            {genreCategories[0].name}
-          </option>
-          <option value={genreCategories[1].name}>
-            {genreCategories[1].name}
-          </option>
-          <option value={genreCategories[2].name}>
-            {genreCategories[2].name}
-          </option>
-          <option value={genreCategories[3].name}>
-            {genreCategories[3].name}
-          </option>
-          {/* {
+            {
                 genreCategories.map(category => {
-                    <option value={category.name} key={category.id}>{category.name}</option>
+                  return  <option value={category.name} key={category.id}>{category.name}</option>
                 })
-            } */}
+            }
         </select>
       </div>
       <div className="form-group">
         <label htmlFor="description">Description</label>
-        <textarea name="description" id="description" value={movieDescription} onChange={handleChangeDescription}/>
+        <textarea
+          name="description"
+          id="description"
+          value={movieDescription}
+          onChange={handleChangeDescription}
+        />
       </div>
       <div className="btns">
         <button className="add-btn">ADD</button>
@@ -107,7 +111,7 @@ const AddForm:React.FC = () => {
       </div>
     </form>
   );
-}
+};
 
 export default AddForm
 

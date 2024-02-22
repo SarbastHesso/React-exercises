@@ -5,6 +5,7 @@ interface IMoviesListProps{
   movies: IMovie[];
 }
 
+
 const MoviesList: React.FC<IMoviesListProps> = ({movies}) => {
   return (
     <div className="movies-list">
