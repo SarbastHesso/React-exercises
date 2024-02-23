@@ -1,13 +1,13 @@
 @use "../abstracts/colors.scss" as *;
 
 .card {
-    height: 450px;
+    height: 300px;
+    max-width: 400px;
     background-color: $russianGreen;
     border-radius: .5rem;
     display: grid;
-    grid-template-rows: 1fr 1fr 4fr;
+    grid-template-rows: 1fr 1fr 5fr;
     .title-rating-wrapper {
-        // height: 100px;
         padding: 1rem 1rem 0;
         display: flex;
         justify-content: space-between;

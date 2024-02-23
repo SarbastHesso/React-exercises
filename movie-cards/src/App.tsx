@@ -4,18 +4,11 @@ import MoviesList from "./pages/MoviesList"
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import {IMovie} from './interfaces';
 import { useState } from "react";
+import {data} from './data';
 
 function App() {
 
-  const [movies, setMovies] = useState<IMovie[]>([
-    {
-      id: Date.now(),
-      title: 'The title of movie',
-      rating: '3',
-      genre: 'Action',
-      description: 'The description of the movie'
-    }
-  ]) 
+  const [movies, setMovies] = useState<IMovie[]>(data) 
 
   const addMovie = (newMovie: IMovie) => {
     setMovies((prev) => [...prev, newMovie])
