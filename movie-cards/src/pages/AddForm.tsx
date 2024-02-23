@@ -39,9 +39,7 @@ const AddForm: React.FC<IAddFormProps> = ({addMovie}) => {
   const handleChangeGenre = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setmovieGenre(e.target.value);
   };
-  const handleChangeDescription = (
-    e: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
+  const handleChangeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMovieDescription(e.target.value);
   };
 
@@ -120,7 +118,7 @@ const AddForm: React.FC<IAddFormProps> = ({addMovie}) => {
         />
       </div>
       <div className="btns">
-        <button className="add-btn">ADD</button>
+        <button type='submit' className="add-btn">ADD</button>
         <button className="clear-btn" onClick={handleClearForm}>CLEAR</button>
       </div>
     </form>
