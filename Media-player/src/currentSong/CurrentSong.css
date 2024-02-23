@@ -5,12 +5,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    min-width: 600px;
     height: 570px;
 }
 
 @media screen and (max-width: 768px){
     .current-song {
         flex: 0;
+        min-width: auto;
+        width: 100%;
     }
 }

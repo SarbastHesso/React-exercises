@@ -11,6 +11,7 @@
     margin: 1rem 0;
     background-color: #00000075;
     padding-right: 2rem;
+    cursor: pointer;
 }
 
 .playlist .item .img-container {

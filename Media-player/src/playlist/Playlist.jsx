@@ -1,6 +1,7 @@
 import './Playlist.css';
 
-const Playlist = ({data, currentSong}) => {
+const Playlist = ({data, currentSong, changeCurrentSong}) => {
+
 
   return (
     <section className="playlist">
@@ -33,7 +34,7 @@ const Playlist = ({data, currentSong}) => {
                 );
             } else {
                 return (
-                  <div className="item flex" id={item.id} key={item.id}>
+                  <div className="item flex" id={item.id} key={item.id} onClick={() => changeCurrentSong(item)}>
                     <div className="img-container">
                       <img className="item-img" src={item.img} alt="" />
                     </div>
