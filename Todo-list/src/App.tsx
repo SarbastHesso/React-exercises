@@ -26,6 +26,23 @@ function App() {
     setTodos(filteredTodos);
   }
 
+  const moveTodo = (todo: ITodo, direction: string) => {
+    todos.map (item => {
+      if (item.id === todo.id){
+        const currentIndex: number = todos.indexOf(item);
+        const newIndex = direction === 'up' ? currentIndex - 1 : currentIndex + 1;
+        if (newIndex < 0 || newIndex >= todos.length){
+          return;
+        }
+        const updatedTodos = [...todos];
+        const currentTodo = updatedTodos[currentIndex];
+        updatedTodos[currentIndex] = updatedTodos[newIndex];
+        updatedTodos[newIndex] = currentTodo;
+        setTodos(updatedTodos);
+      }
+    })
+  }
+
   return (
     <div className="app">
       <div className="gradient-bg">
@@ -35,7 +52,12 @@ function App() {
       </div>
       <div className="container">
         <AddTodo addNewTodo={addNewTodo} />
-        <TodosList todos={todos} completedToggle={completedToggle} deletTodo={deletTodo}/>
+        <TodosList
+          todos={todos}
+          completedToggle={completedToggle}
+          deletTodo={deletTodo}
+          moveTodo={moveTodo}
+        />
       </div>
     </div>
   );

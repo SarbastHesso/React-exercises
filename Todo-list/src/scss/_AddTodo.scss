@@ -6,7 +6,7 @@
     margin-bottom: 1.5rem;
     .wrapper {
         display: grid;
-        grid-template-columns: 3fr 2fr;
+        grid-template-columns: 3fr 1fr;
         .title, .datepicker, .author, .add-btn {
             background-color: $primary;
             padding: 1rem;
@@ -19,6 +19,7 @@
             text-align: center;
             cursor: pointer;
             width: 100%;
+            background-color: $danger;
         }
         .react-datepicker__header {
             text-align: center;
@@ -57,9 +58,8 @@
             position: relative;
         }
         .add-btn {
-            background: $linear-gradient;
+            background: #3632c0;
             cursor: pointer;
-            margin: .5rem 2rem;
         }
     }
 }

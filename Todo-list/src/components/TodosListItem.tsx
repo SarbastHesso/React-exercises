@@ -5,6 +5,7 @@ interface ITodosListItemProps {
   todo: ITodo;
   completedToggle: (todo: ITodo) => void;
   deletTodo: (todo: ITodo) => void;
+  moveTodo: (todo: ITodo, direction: string) => void;
 }
 
 const TodosListItem: React.FC<ITodosListItemProps> = (props) => {
@@ -45,8 +46,8 @@ const TodosListItem: React.FC<ITodosListItemProps> = (props) => {
         </div>
       </div>
       <div className="btns-wrapper">
-        <span className="move-up-btn material-symbols-outlined">move_up</span>
-        <span className="move-down-btn material-symbols-outlined">move_down</span>
+        <span className="move-up-btn material-symbols-outlined" onClick={() => {props.moveTodo(props.todo, 'up')}}>move_up</span>
+        <span className="move-down-btn material-symbols-outlined" onClick={() => {props.moveTodo(props.todo, 'down')}}>move_down</span>
       </div>
       <div className="btns-wrapper">
         <span className="edit-btn material-symbols-outlined">edit_note</span>
