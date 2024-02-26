@@ -1,4 +1,5 @@
-import { useState } from 'react';
+
+import React, { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IMovie } from '../interfaces';
 
@@ -12,7 +13,7 @@ interface IAddFormProps {
 }
 
 
-const AddForm: React.FC<IAddFormProps> = ({addMovie}) => {
+const AddForm:FC<IAddFormProps> = ({addMovie}) => {
 
     const navigate = useNavigate();
 
