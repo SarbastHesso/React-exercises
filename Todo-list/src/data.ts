@@ -9,7 +9,7 @@ export const data = [
   {
     id: 2,
     author: "Roni",
-    title: "Renew rym membership",
+    title: "Renew gym membership",
     date: new Date().toDateString(),
     completed: true,
   },

@@ -6,6 +6,7 @@ interface ITodosListProps {
   completedToggle: (todo: ITodo) => void;
   deletTodo: (todo: ITodo) => void;
   moveTodo: (todo: ITodo, direction: string) => void;
+  editTodo: (todo: ITodo) => void;
 }
 
 
@@ -20,6 +21,7 @@ const todosList: React.FC<ITodosListProps> = (props) => {
             completedToggle={props.completedToggle}
             deletTodo={props.deletTodo}
             moveTodo={props.moveTodo}
+            editTodo={props.editTodo}
           />
         );
       })}

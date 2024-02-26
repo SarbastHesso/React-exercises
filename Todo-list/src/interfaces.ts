@@ -1,5 +1,5 @@
 export interface ITodo {
-    id: number;
+    id: string | number;
     author: string;
     title: string;
     date: string;
