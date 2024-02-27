@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TodosList from './components/TodosList';
 import {data} from './data';
 import { ITodo } from './interfaces';
@@ -13,6 +13,8 @@ function App() {
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const [editedTodo, setEditedTodo] = useState<ITodo | null>(null);
 
+  const [isFiltred, setIsFiltred] = useState<boolean>(false);
+  const [todysTodos, setTodaysTodos] = useState<ITodo[] | null>(null);
 
   const [title, setTitle] = useState<string>("");
   const [author, setAuthor] = useState<string>("");
@@ -94,12 +96,23 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    if (isFiltred){
+      const filtredTodos = todos.filter(item => item.date === new Date().toDateString())
+      setTodaysTodos(filtredTodos)
+    } else {
+      setTodaysTodos(null)
+    }
+  }, [todos, isFiltred])
 
   return (
     <div className="app">
       <div className="gradient-bg">
         <div className="container">
-          <Header />
+          <Header
+            isFiltred={isFiltred}
+            handleFilter={() => setIsFiltred(!isFiltred)}
+          />
         </div>
       </div>
       <div className="container">
@@ -116,7 +129,7 @@ function App() {
           editedTodo={editedTodo}
         />
         <TodosList
-          todos={todos}
+          todos={isFiltred ? todysTodos || [] : todos}
           completedToggle={completedToggle}
           deletTodo={deletTodo}
           moveTodo={moveTodo}

@@ -24,6 +24,9 @@
             width: 100%;
             background-color: $danger;
         }
+        .datepicker:hover {
+            background: $reverse-linear-gradient;
+        }
         .react-datepicker__header {
             text-align: center;
             background-color: $primary;
@@ -64,6 +67,9 @@
             background: $reverse-linear-gradient;
             cursor: pointer;
             border: 1px solid $bg;
+        }
+        .add-btn:hover {
+            background: $radial-gradient;
         }
     }
 }

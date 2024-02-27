@@ -10,14 +10,14 @@ export const data = [
     id: 2,
     author: "Roni",
     title: "Renew gym membership",
-    date: new Date().toDateString(),
+    date: new Date("Wed Feb 28 2024").toDateString(),
     completed: true,
   },
   {
     id: 3,
     author: "Naya",
     title: "Do homework",
-    date: new Date().toDateString(),
+    date: new Date("Thu Feb 29 2024").toDateString(),
     completed: false,
   },
   {
@@ -31,7 +31,7 @@ export const data = [
     id: 5,
     author: "Sarbast",
     title: "Read for 1 hour",
-    date: new Date().toDateString(),
+    date: new Date("Fri Mar 01 2024").toDateString(),
     completed: true,
   },
 ];
