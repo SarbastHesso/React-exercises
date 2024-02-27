@@ -83,10 +83,14 @@
     .btns-wrapper {
         display: flex;
         flex-direction: column;
-        .move-up-btn, .move-down-btn, .edit-btn, .delete-btn {
+        .move-up-btn, .move-down-btn, .edit-btn {
             font-size: 1.7rem;
             padding: .5rem;
             cursor: pointer;
+        }
+        .delete-btn {
+            font-size: 1.7rem;
+            padding: .5rem;
         }
     }
 
@@ -99,4 +103,5 @@
 
 .ready-to-delete {
     color: $danger;
+    cursor: pointer;
 }
