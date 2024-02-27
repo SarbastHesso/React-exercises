@@ -15,6 +15,9 @@
             outline: none;
             font-size: 1rem;
         }
+        .title {
+            border-bottom: 2px solid $bg;;
+        }
         .datepicker {
             text-align: center;
             cursor: pointer;
@@ -58,8 +61,9 @@
             position: relative;
         }
         .add-btn {
-            background: $pruple-blue;
+            background: $reverse-linear-gradient;
             cursor: pointer;
+            border: 1px solid $bg;
         }
     }
 }
