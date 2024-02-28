@@ -1,0 +1,42 @@
+@use './colors' as *;
+.header {
+    background-color: $primary;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .logo-search-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            .logo {
+                padding: .5rem;
+                border: 2px double $light;
+                border-radius: 50%;
+                color: $light;
+                text-decoration: none;
+                span {
+                    font-size: 1.2rem;
+                }
+            }
+            .search-form {
+                .search-input{
+                    background-color: $light;
+                    border: none;
+                    outline: none;
+                    padding: .5rem;
+                    font-size: 1rem;
+                }
+            }
+        }
+        .navbar {
+            padding: 2rem 0;
+            .navlink {
+                text-decoration: none;
+                padding: 1rem;
+                color: $light;
+                font-size: 1.2rem;
+            }
+    }
+    }
+}
