@@ -17,3 +17,6 @@ export interface IChannel {
     tagline: string;
     xmltvid: string;
 }
+
+
+

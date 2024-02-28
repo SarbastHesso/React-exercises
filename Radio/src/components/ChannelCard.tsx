@@ -1,10 +1,11 @@
 import { IChannel } from "../interfaces"
 
 interface IChannelCardProps {
-  channel: IChannel
+  channel: IChannel;
 }
 
 const ChannelCard = (props: IChannelCardProps) => {
+
   return (
     <div className="channel-card" id={props.channel.id.toString()}>
       <div className="image-container">
@@ -21,12 +22,9 @@ const ChannelCard = (props: IChannelCardProps) => {
         <div className="tagline">
           <p>{props.channel.tagline}</p>
         </div>
-        <div className="live-btn">
-          <span className="live-play-icon material-symbols-outlined">
-            play_arrow
-          </span>
-          <span>LIVE</span>
-        </div>
+        <audio className="audio-controls" controls>
+          <source src={props.channel.liveaudio.url}/>
+        </audio>
       </div>
     </div>
   );
