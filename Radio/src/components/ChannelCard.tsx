@@ -22,8 +22,8 @@ const ChannelCard = (props: IChannelCardProps) => {
         <div className="tagline">
           <p>{props.channel.tagline}</p>
         </div>
-        <audio className="audio-controls" controls>
-          <source src={props.channel.liveaudio.url}/>
+        <audio className="audio-controls" controls onClick={() => console.log(props.channel)}>
+          <source src={props.channel.liveaudio.url} type="audio/mpeg"/>
         </audio>
       </div>
     </div>

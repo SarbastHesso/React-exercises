@@ -13,18 +13,6 @@ function App() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalChannelsPages, setTotalChannelPages] = useState<number>(1)
 
-  const fetchChannels = async () => {
-    try {
-      const response = await fetch(
-        `http://api.sr.se/api/v2/channels?format=json&page=${currentPage}`
-      );
-      const data = await response.json();
-      setChannels(data.channels);
-      setTotalChannelPages(data.pagination.totalpages)
-    } catch (error) {
-      console.error("Error fetching channels", error);
-    }
-  };
 
   const channelsPagination = (page: number) => {
     setCurrentPage(page);
@@ -32,7 +20,21 @@ function App() {
 
 
   useEffect(() => {
-    fetchChannels();
+    if (currentPage){
+      const fetchChannels = async () => {
+        try {
+          const response = await fetch(
+            `http://api.sr.se/api/v2/channels?format=json&page=${currentPage}`
+          );
+          const data = await response.json();
+          setChannels(data.channels);
+          setTotalChannelPages(data.pagination.totalpages);
+        } catch (error) {
+          console.error("Error fetching channels", error);
+        }
+      };
+      fetchChannels();
+    }
   },[currentPage]);
 
   useEffect(() => {
@@ -67,3 +69,6 @@ function App() {
 }
 
 export default App
+
+
+
