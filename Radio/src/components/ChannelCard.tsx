@@ -7,7 +7,7 @@ interface IChannelCardProps {
 const ChannelCard = (props: IChannelCardProps) => {
 
   return (
-    <div className="channel-card" id={props.channel.id.toString()}>
+    <div className="card" id={props.channel.id.toString()}>
       <div className="image-container">
         <img src={props.channel.image} alt="" />
       </div>
@@ -19,11 +19,11 @@ const ChannelCard = (props: IChannelCardProps) => {
           </div>
           <span className="favorite-icon material-symbols-outlined">star</span>
         </div>
-        <div className="tagline">
+        <div className="description">
           <p>{props.channel.tagline}</p>
         </div>
-        <audio className="audio-controls" controls onClick={() => console.log(props.channel)}>
-          <source src={props.channel.liveaudio.url} type="audio/mpeg"/>
+        <audio className="audio-controls" controls>
+          <source src={props.channel.liveaudio.url} type="audio/mpeg" />
         </audio>
       </div>
     </div>

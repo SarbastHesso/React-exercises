@@ -1,5 +1,5 @@
 @use './colors' as *;
-.channels-list {
+.cards-list {
     padding: 4rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

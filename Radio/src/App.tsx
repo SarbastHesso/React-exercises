@@ -3,43 +3,67 @@ import { useEffect, useState } from "react";
 import RootLayout from './components/RootLayout';
 import Home from './views/Home';
 import ChannelsList from './views/ChannelsList';
-import { IChannel } from "./interfaces";
+import { IChannel, IProgram } from "./interfaces";
 import ProgramsList from './views/ProgramsList';
 
 
 function App() {
 
   const [channels, setChannels] = useState<IChannel[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalChannelsPages, setTotalChannelPages] = useState<number>(1)
+  const [currentChannelPage, setCurrentChannelPage] = useState<number>(1);
+  const [totalChannelsPages, setTotalChannelsPages] = useState<number>(1)
+
+  const [programs, setPrograms] = useState<IProgram[]>([]);
+  const [currentProgramPage, setCurrentProgramPage] = useState<number>(1);
+  const [totalProgramsPages, setTotalProgramsPages] = useState<number>(1);
 
 
   const channelsPagination = (page: number) => {
-    setCurrentPage(page);
+    setCurrentChannelPage(page);
+  }
+
+  const programsPagination = (page: number) => {
+    setCurrentProgramPage(page);
   }
 
 
   useEffect(() => {
-    if (currentPage){
+    if (currentChannelPage) {
       const fetchChannels = async () => {
         try {
           const response = await fetch(
-            `http://api.sr.se/api/v2/channels?format=json&page=${currentPage}`
+            `http://api.sr.se/api/v2/channels?format=json&page=${currentChannelPage}`
           );
           const data = await response.json();
           setChannels(data.channels);
-          setTotalChannelPages(data.pagination.totalpages);
+          setTotalChannelsPages(data.pagination.totalpages);
         } catch (error) {
           console.error("Error fetching channels", error);
         }
       };
       fetchChannels();
     }
-  },[currentPage]);
+    if (currentProgramPage) {
+      const fetchPrograms = async () => {
+        try {
+          const response = await fetch(
+            `https://api.sr.se/api/v2/programs?format=json&page=${currentProgramPage}`
+          );
+          const data = await response.json();
+          setPrograms(data.programs);
+          setTotalProgramsPages(data.pagination.totalpages);
+        } catch (error) {
+          console.error("Error fetching programs", error);
+        }
+      };
+      fetchPrograms();
+    }
+  }, [currentChannelPage, currentProgramPage]);
 
   useEffect(() => {
     console.log(channels);
-  }, [channels]);
+    console.log(programs);
+  }, [channels, programs]);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -50,13 +74,23 @@ function App() {
           element={
             <ChannelsList
               channels={channels}
-              currentPage={currentPage}
+              currentChannelPage={currentChannelPage}
               totalChannelsPages={totalChannelsPages}
               channelsPagination={channelsPagination}
             />
           }
         />
-        <Route path="/programs" element={<ProgramsList />} />
+        <Route
+          path="/programs"
+          element={
+            <ProgramsList
+              programs={programs}
+              currentProgramPage={currentProgramPage}
+              totalProgramsPages={totalProgramsPages}
+              programsPagination={programsPagination}
+            />
+          }
+        />
       </Route>
     )
   );
