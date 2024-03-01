@@ -26,36 +26,37 @@ function App() {
     setCurrentProgramPage(page);
   }
 
+  const fetchChannels = async () => {
+    try {
+      const response = await fetch(
+        `http://api.sr.se/api/v2/channels?format=json&page=${currentChannelPage}`
+      );
+      const data = await response.json();
+      setChannels(data.channels);
+      setTotalChannelsPages(data.pagination.totalpages);
+    } catch (error) {
+      console.error("Error fetching channels", error);
+    }
+  };
+
+  const fetchPrograms = async () => {
+    try {
+      const response = await fetch(
+        `https://api.sr.se/api/v2/programs?format=json&page=${currentProgramPage}`
+      );
+      const data = await response.json();
+      setPrograms(data.programs);
+      setTotalProgramsPages(data.pagination.totalpages);
+    } catch (error) {
+      console.error("Error fetching programs", error);
+    }
+  };
 
   useEffect(() => {
-    if (currentChannelPage) {
-      const fetchChannels = async () => {
-        try {
-          const response = await fetch(
-            `http://api.sr.se/api/v2/channels?format=json&page=${currentChannelPage}`
-          );
-          const data = await response.json();
-          setChannels(data.channels);
-          setTotalChannelsPages(data.pagination.totalpages);
-        } catch (error) {
-          console.error("Error fetching channels", error);
-        }
-      };
+    if (currentChannelPage) {      
       fetchChannels();
     }
     if (currentProgramPage) {
-      const fetchPrograms = async () => {
-        try {
-          const response = await fetch(
-            `https://api.sr.se/api/v2/programs?format=json&page=${currentProgramPage}`
-          );
-          const data = await response.json();
-          setPrograms(data.programs);
-          setTotalProgramsPages(data.pagination.totalpages);
-        } catch (error) {
-          console.error("Error fetching programs", error);
-        }
-      };
       fetchPrograms();
     }
   }, [currentChannelPage, currentProgramPage]);
