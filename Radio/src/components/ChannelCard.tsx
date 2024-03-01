@@ -2,6 +2,7 @@ import { IChannel } from "../interfaces"
 
 interface IChannelCardProps {
   channel: IChannel;
+  playLiveAudio: (src: string) => void;
 }
 
 const ChannelCard = (props: IChannelCardProps) => {
@@ -22,9 +23,13 @@ const ChannelCard = (props: IChannelCardProps) => {
         <div className="description">
           <p>{props.channel.tagline}</p>
         </div>
-        <audio className="audio-controls" controls>
-          <source src={props.channel.liveaudio.url} type="audio/mpeg" />
-        </audio>
+        <div
+          className="live-btn"
+          onClick={() => props.playLiveAudio(props.channel.liveaudio.url)}
+          >
+          <span className="material-symbols-outlined">play_arrow</span>
+          <span>LIVE</span>
+        </div>
       </div>
     </div>
   );
