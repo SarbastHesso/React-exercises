@@ -4,7 +4,9 @@
   background-color: $primary;
   display: flex;
   flex-direction: column;
-  .image-container {
+  box-shadow: 0 0 10px 1px $light;
+  .card-header {
+    cursor: pointer;
     img {
       width: 100%;
     }
@@ -13,7 +15,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+
     .title-favoeite-wrapper {
       padding: 1rem 1rem 0.5rem;
       display: flex;
@@ -23,7 +25,7 @@
       .title {
         display: flex;
         align-items: center;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
       }
       .favorite-icon {
         font-size: 2rem;
@@ -35,14 +37,14 @@
       margin-bottom: 1rem;
       p {
         color: $light;
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
     }
-    .live-btn {
-      display: flex;
-      align-items: center;
-      margin: 1rem;
-      cursor: pointer;
-    }
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+    cursor: pointer;
   }
 }

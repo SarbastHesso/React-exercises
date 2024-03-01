@@ -7,7 +7,7 @@ interface IProgramCardProps {
 const ProgramCard = (props: IProgramCardProps) => {
   return (
     <div className="card" id={props.program.id.toString()}>
-      <div className="image-container">
+      <div className="card-header">
         <img src={props.program.programimage} alt="" />
       </div>
       <div className="card-body">
