@@ -53,12 +53,8 @@ function App() {
   };
 
   useEffect(() => {
-    if (currentChannelPage) {      
-      fetchChannels();
-    }
-    if (currentProgramPage) {
-      fetchPrograms();
-    }
+    fetchChannels();
+    fetchPrograms();
   }, [currentChannelPage, currentProgramPage]);
 
   useEffect(() => {
@@ -71,7 +67,7 @@ function App() {
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
         <Route
-          path="/channels"
+          path="channels"
           element={
             <ChannelsList
               channels={channels}
@@ -82,7 +78,7 @@ function App() {
           }
         />
         <Route
-          path="/programs"
+          path="programs"
           element={
             <ProgramsList
               programs={programs}
