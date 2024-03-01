@@ -26,10 +26,10 @@ function App() {
     setCurrentProgramPage(page);
   }
 
-  const fetchChannels = async () => {
+  const fetchChannels = async (pageNumber:number) => {
     try {
       const response = await fetch(
-        `http://api.sr.se/api/v2/channels?format=json&page=${currentChannelPage}`
+        `http://api.sr.se/api/v2/channels?format=json&page=${pageNumber}`
       );
       const data = await response.json();
       setChannels(data.channels);
@@ -39,10 +39,10 @@ function App() {
     }
   };
 
-  const fetchPrograms = async () => {
+  const fetchPrograms = async (pageNumber:number) => {
     try {
       const response = await fetch(
-        `https://api.sr.se/api/v2/programs?format=json&page=${currentProgramPage}`
+        `https://api.sr.se/api/v2/programs?format=json&page=${pageNumber}`
       );
       const data = await response.json();
       setPrograms(data.programs);
@@ -53,8 +53,8 @@ function App() {
   };
 
   useEffect(() => {
-    fetchChannels();
-    fetchPrograms();
+    fetchChannels(currentChannelPage);
+    fetchPrograms(currentProgramPage);
   }, [currentChannelPage, currentProgramPage]);
 
   useEffect(() => {
