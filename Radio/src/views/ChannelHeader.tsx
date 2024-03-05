@@ -11,7 +11,7 @@ const ChannelHeader = () => {
           <Link to={`/channel/${channelId}/programs`} className="channel-navlink">program</Link>
         </nav>
         <div className="channel-title">
-          <h3>Channel name {channelId}</h3>
+          <h3>Channel name</h3>
         </div>
       </header>
     </>

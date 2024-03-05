@@ -37,10 +37,18 @@ const ChannelsList = () => {
     const audioElement = document.getElementById(
       "audio-element"
     ) as HTMLAudioElement;
-    if (audioElement) {
+    if (audioElement && liveAudioSrc) {
       audioElement.src = liveAudioSrc;
-      audioElement.play();
+      audioElement.addEventListener("loadedmetadata", () => {
+        audioElement.play();
+      });
     }
+    return () => {
+      // Cleanup event listener when component unmounts
+      if (audioElement) {
+        audioElement.removeEventListener("loadedmetadata", () => {});
+      }
+    };
   }, [liveAudioSrc]);
 
   useEffect(() => {

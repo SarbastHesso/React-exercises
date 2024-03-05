@@ -1,4 +1,4 @@
-export interface ILiveaudio {
+interface ILiveaudio {
     id: number;
     statkey: string;
     url: string;
@@ -18,13 +18,36 @@ export interface IChannel {
     xmltvid: string;
 }
 
+interface IEpisodeProgram {
+  id: number;
+  name: string;
+}
 
-export interface ISocialmediaplatform {
+interface IEpisodeChannel {
+  id: number;
+  name: string;
+}
+
+export interface IEpisode {
+  episodeid: number;
+  title: string;
+  description: string;
+  starttimeutc: string;
+  endtimeutc: string;
+  program: IEpisodeProgram;
+  channel: IEpisodeChannel;
+  imageurl: string;
+  imageurltemplate: string;
+  photographer: string | null;
+}
+
+
+interface ISocialmediaplatform {
   platform: string;
   platformurl: string;
 }
 
-export interface IProgramschannel {
+interface IProgramschannel {
     id: number;
     name: string;
 }
