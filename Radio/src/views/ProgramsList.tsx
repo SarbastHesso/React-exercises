@@ -1,20 +1,15 @@
 import ProgramCard from "../components/ProgramCard"
-import { useEffect } from "react";
-import { IProgram } from "../interfaces";
+import { useContext, useEffect } from "react";
+import { ProgramContext } from "../context/ProgramsContext";
 
-interface IProgramListProps {
-  programs: IProgram[];
-  currentProgramPage: number;
-  totalProgramsPages: number;
-  programsPagination: (page: number) => void;
-}
+const ProgramsList = () => {
 
-const ProgramsList = (props: IProgramListProps) => {
+  const {programs, currentProgramPage, totalProgramsPages, programsPagination} = useContext(ProgramContext)
 
   const renderPageNumbers = () => {
     const pageNumbers = [];
-    const totalPages = props.totalProgramsPages;
-    const currentPage = props.currentProgramPage;
+    const totalPages = totalProgramsPages;
+    const currentPage = currentProgramPage;
 
     let startPage = Math.max(1, currentPage - 2); 
     let endPage = Math.min(totalPages, startPage + 3);
@@ -29,7 +24,7 @@ const ProgramsList = (props: IProgramListProps) => {
       <button
         className={i === currentPage ? "page-number active" : "page-number"}
         key={i}
-        onClick={() => props.programsPagination(i)}
+        onClick={() => programsPagination(i)}
       >
         {i}
       </button>
@@ -40,34 +35,34 @@ const ProgramsList = (props: IProgramListProps) => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [props.currentProgramPage]);
+  }, [currentProgramPage]);
 
   return (
     <>
       <div className="cards-list">
-        {props.programs.map((program) => {
+        {programs.map((program) => {
           return <ProgramCard program={program} key={program.id} />;
         })}
       </div>
       <div className="pagination">
         <button
           className={`previous-btn ${
-            props.currentProgramPage === 1 ? "disabled" : ""
+            currentProgramPage === 1 ? "disabled" : ""
           }`}
-          onClick={() => props.programsPagination(props.currentProgramPage - 1)}
-          disabled={props.currentProgramPage === 1}
+          onClick={() => programsPagination(currentProgramPage - 1)}
+          disabled={currentProgramPage === 1}
         >
           <span className="material-symbols-outlined">arrow_back_ios</span>
         </button>
         {renderPageNumbers()}
         <button
           className={`next-btn ${
-            props.currentProgramPage == props.totalProgramsPages
+            currentProgramPage == totalProgramsPages
               ? "disabled"
               : ""
           }`}
-          onClick={() => props.programsPagination(props.currentProgramPage + 1)}
-          disabled={props.currentProgramPage === props.totalProgramsPages}
+          onClick={() => programsPagination(currentProgramPage + 1)}
+          disabled={currentProgramPage === totalProgramsPages}
         >
           <span className="material-symbols-outlined">arrow_forward_ios</span>
         </button>

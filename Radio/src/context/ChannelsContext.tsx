@@ -47,9 +47,6 @@ export function ChannelContextProvider({children}: IChannelContextProviderProps)
       fetchChannels(currentChannelPage);
     }, [currentChannelPage]);
 
-    useEffect(() => {
-      console.log(channels);
-    }, [channels]);
 
     return <ChannelContext.Provider value={values}>{children}</ChannelContext.Provider>
 }
