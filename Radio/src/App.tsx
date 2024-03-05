@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import RootLayout from './components/RootLayout';
 import Home from './views/Home';
 import ChannelsList from './views/ChannelsList';
-import { IChannel, IProgram } from "./interfaces";
+import { IProgram } from "./interfaces";
 import ProgramsList from './views/ProgramsList';
 import ChannelLayout from './components/ChannelLayout';
 import ChannelScheduledEpisodes from './views/ChannelScheduledEpisodes';
@@ -12,35 +12,14 @@ import ChannelPrograms from './views/ChannelPrograms';
 
 function App() {
 
-  const [channels, setChannels] = useState<IChannel[]>([]);
-  const [currentChannelPage, setCurrentChannelPage] = useState<number>(1);
-  const [totalChannelsPages, setTotalChannelsPages] = useState<number>(1)
-
   const [programs, setPrograms] = useState<IProgram[]>([]);
   const [currentProgramPage, setCurrentProgramPage] = useState<number>(1);
   const [totalProgramsPages, setTotalProgramsPages] = useState<number>(1);
 
 
-  const channelsPagination = (page: number) => {
-    setCurrentChannelPage(page);
-  }
-
   const programsPagination = (page: number) => {
     setCurrentProgramPage(page);
   }
-
-  const fetchChannels = async (pageNumber:number) => {
-    try {
-      const response = await fetch(
-        `http://api.sr.se/api/v2/channels?format=json&page=${pageNumber}`
-      );
-      const data = await response.json();
-      setChannels(data.channels);
-      setTotalChannelsPages(data.pagination.totalpages);
-    } catch (error) {
-      console.error("Error fetching channels", error);
-    }
-  };
 
   const fetchPrograms = async (pageNumber:number) => {
     try {
@@ -56,30 +35,18 @@ function App() {
   };
 
   useEffect(() => {
-    fetchChannels(currentChannelPage);
     fetchPrograms(currentProgramPage);
-  }, [currentChannelPage, currentProgramPage]);
+  }, [currentProgramPage]);
 
   useEffect(() => {
-    console.log(channels);
     console.log(programs);
-  }, [channels, programs]);
+  }, [ programs]);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
-        <Route
-          path="channels"
-          element={
-            <ChannelsList
-              channels={channels}
-              currentChannelPage={currentChannelPage}
-              totalChannelsPages={totalChannelsPages}
-              channelsPagination={channelsPagination}
-            />
-          }
-        />
+        <Route path="channels" element={<ChannelsList/>} />
         <Route path="channel/:channelId" element={<ChannelLayout />}>
           <Route index element={<ChannelScheduledEpisodes />} />
           <Route path="episodes" element={<ChannelScheduledEpisodes />} />
