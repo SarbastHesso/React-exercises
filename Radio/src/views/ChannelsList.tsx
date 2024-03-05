@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import ChannelCard from "../components/ChannelCard";
 import { ChannelContext } from "../context/ChannelsContext";
+import Pagination from "../components/Pagination";
 
 
 const ChannelsList = () => {
@@ -15,32 +16,6 @@ const ChannelsList = () => {
   const [liveAudioSrc, setLiveAudioSrc] = useState<string>("");
   const [isAudioControls, setIsAudioControls] = useState<boolean>(false);
 
-  const renderPageNumbers = () => {
-    const pageNumbers = [];
-    const totalPages = totalChannelsPages;
-    const currentPage = currentChannelPage;
-
-    let startPage = Math.max(1, currentPage - 2);
-    let endPage = Math.min(totalPages, startPage + 3);
-
-    if (endPage - startPage < 3) {
-      endPage = Math.min(totalPages, currentPage + 1);
-      startPage = Math.max(1, endPage - 3);
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-      pageNumbers.push(
-        <button
-          className={i === currentPage ? "page-number active" : "page-number"}
-          key={i}
-          onClick={() => channelsPagination(i)}
-        >
-          {i}
-        </button>
-      );
-    }
-    return pageNumbers;
-  };
 
   const playLiveAudio = (src: string) => {
     setLiveAudioSrc(src);
@@ -74,11 +49,17 @@ const ChannelsList = () => {
 
   return (
     <>
-      <div className={isAudioControls ? "audio-container show-controls" : "audio-container"}>
+      <div
+        className={
+          isAudioControls ? "audio-container show-controls" : "audio-container"
+        }
+      >
         <audio id="audio-element" className="audio-controls" controls>
           <source src={liveAudioSrc} type="audio/mpeg" />
         </audio>
-        <span className="close-icon" onClick={() => closeAudioControls()}>X</span>
+        <span className="close-icon" onClick={() => closeAudioControls()}>
+          X
+        </span>
       </div>
       <div className="cards-list">
         {channels.map((channel) => {
@@ -91,29 +72,11 @@ const ChannelsList = () => {
           );
         })}
       </div>
-      <div className="pagination">
-        <button
-          className={`previous-btn ${
-            currentChannelPage === 1 ? "disabled" : ""
-          }`}
-          onClick={() => channelsPagination(currentChannelPage - 1)}
-          disabled={currentChannelPage === 1}
-        >
-          <span className="material-symbols-outlined">arrow_back_ios</span>
-        </button>
-        {renderPageNumbers()}
-        <button
-          className={`next-btn ${
-            currentChannelPage == totalChannelsPages
-              ? "disabled"
-              : ""
-          }`}
-          onClick={() => channelsPagination(currentChannelPage + 1)}
-          disabled={currentChannelPage === totalChannelsPages}
-        >
-          <span className="material-symbols-outlined">arrow_forward_ios</span>
-        </button>
-      </div>
+      <Pagination
+        totalPages={totalChannelsPages}
+        currentPage={currentChannelPage}
+        pagination={channelsPagination}
+      />
     </>
   );
 };

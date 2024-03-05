@@ -1,0 +1,39 @@
+@use './colors' as *;
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin-bottom: 3rem;
+    .previous-btn, .next-btn {
+        border: none;
+        border-right: 1px solid $dark;
+        outline: none;
+        padding: .5rem ;
+        background-color: $light;
+        color: $dark;
+        cursor: pointer;
+        span {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
+    .page-number {
+        border: none;
+        border-right: 1px solid $dark;
+        outline: none;
+        padding: .7rem 1rem;
+        background-color: $light;
+        color: $dark;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .active {
+        background-color: $dark;
+        color: $light;
+    }
+    .disabled {
+        opacity: .3;
+    }
+}
