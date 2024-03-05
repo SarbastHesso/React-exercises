@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { IChannel } from "../interfaces"
 
 interface IChannelCardProps {
@@ -9,9 +10,9 @@ const ChannelCard = (props: IChannelCardProps) => {
 
   return (
     <div className="card" id={props.channel.id.toString()}>
-      <div className="card-header">
+      <Link to={`/channel/${props.channel.id}`} className="card-header">
         <img src={props.channel.image} alt="" />
-      </div>
+      </Link>
       <div className="card-body">
         <div className="title-favoeite-wrapper">
           <div className="title">

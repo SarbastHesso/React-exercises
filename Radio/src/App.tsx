@@ -5,6 +5,9 @@ import Home from './views/Home';
 import ChannelsList from './views/ChannelsList';
 import { IChannel, IProgram } from "./interfaces";
 import ProgramsList from './views/ProgramsList';
+import ChannelLayout from './components/ChannelLayout';
+import ChannelScheduledEpisodes from './views/ChannelScheduledEpisodes';
+import ChannelPrograms from './views/ChannelPrograms';
 
 
 function App() {
@@ -77,6 +80,11 @@ function App() {
             />
           }
         />
+        <Route path="channel/:channelId" element={<ChannelLayout />}>
+          <Route index element={<ChannelScheduledEpisodes />} />
+          <Route path="episodes" element={<ChannelScheduledEpisodes />} />
+          <Route path="programs" element={<ChannelPrograms />} />
+        </Route>
         <Route
           path="programs"
           element={

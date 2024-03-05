@@ -1,0 +1,18 @@
+@use './colors' as *;
+.channel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid $light;
+    .channel-navbar {
+        display: flex;
+        align-items: center;
+        .channel-navlink {
+            color: $light;
+            padding: 1rem;
+            text-decoration: none;
+        }
+    }
+}
