@@ -6,29 +6,29 @@ interface IChannelCardProps {
   playLiveAudio: (src: string) => void;
 }
 
-const ChannelCard = (props: IChannelCardProps) => {
+const ChannelCard = ({channel, playLiveAudio}: IChannelCardProps) => {
 
   return (
-    <div className="card" id={props.channel.id.toString()}>
-      <Link to={`/channel/${props.channel.id}`} className="card-header">
-        <img src={props.channel.image} alt="" />
+    <div className="card" id={channel.id.toString()}>
+      <Link to={`/channel/${channel.id}`} className="card-header">
+        <img src={channel.image} alt="" />
       </Link>
       <div className="card-body">
         <div className="title-favoeite-wrapper">
           <div className="title">
             <h4 className="name">
-              {props.channel.name}-{props.channel.channeltype}
+              {channel.name}-{channel.channeltype}
             </h4>
           </div>
           <span className="favorite-icon material-symbols-outlined">star</span>
         </div>
         <div className="description">
-          <p>{props.channel.tagline}</p>
+          <p>{channel.tagline}</p>
         </div>
       </div>
       <div
         className="card-footer"
-        onClick={() => props.playLiveAudio(props.channel.liveaudio.url)}
+        onClick={() => playLiveAudio(channel.liveaudio.url)}
       >
         <span className="material-symbols-outlined">play_arrow</span>
         <span>LIVE</span>

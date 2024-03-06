@@ -1,0 +1,21 @@
+@use './colors' as*;
+.card-info-container {
+    max-width: 400px;
+    margin: auto;
+    .card {
+        .card-footer {
+            .socialmedia-icons {
+                width: 100%;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                .socialmedia-icon {
+                    font-size: 1.5rem;
+                    padding: .5rem;
+                    cursor: pointer;
+                    color: $light;
+                }
+            }
+        }
+    }
+}

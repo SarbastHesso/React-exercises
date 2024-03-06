@@ -6,17 +6,21 @@ import { ChannelContextProvider } from './context/ChannelsContext.tsx';
 import { ProgramContextProvider } from './context/ProgramsContext.tsx';
 import { ChannelEpisodeContextProvider } from './context/ChannelEpisodesContext.tsx';
 import { ChannelProgramContextProvider } from './context/ChannelProgramsContext.tsx';
+import { PorgramInfoContextProvider } from './context/ProgramContext.tsx';
+
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ProgramContextProvider>
-      <ChannelContextProvider>
-        <ChannelProgramContextProvider>
-          <ChannelEpisodeContextProvider>
-            <App />
-          </ChannelEpisodeContextProvider>
-        </ChannelProgramContextProvider>
-      </ChannelContextProvider>
+      <PorgramInfoContextProvider>
+        <ChannelContextProvider>
+          <ChannelProgramContextProvider>
+            <ChannelEpisodeContextProvider>
+              <App />
+            </ChannelEpisodeContextProvider>
+          </ChannelProgramContextProvider>
+        </ChannelContextProvider>
+      </PorgramInfoContextProvider>
     </ProgramContextProvider>
   </React.StrictMode>
 );

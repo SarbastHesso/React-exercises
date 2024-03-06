@@ -33,10 +33,16 @@ const ProgramHeader = () => {
             Program
           </Link>
           <Link
-            to={`/program/${programId}/episodes`}
+            to={`/program/${programId}/broadcasts`}
             className="subroute-navlink"
           >
             Sändningar
+          </Link>
+          <Link
+            to={`/program/${programId}/podfiles`}
+            className="subroute-navlink"
+          >
+            Podd
           </Link>
         </nav>
       </header>
