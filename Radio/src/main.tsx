@@ -5,14 +5,17 @@ import './scss/main.scss';
 import { ChannelContextProvider } from './context/ChannelsContext.tsx';
 import { ProgramContextProvider } from './context/ProgramsContext.tsx';
 import { ChannelEpisodeContextProvider } from './context/ChannelEpisodesContext.tsx';
+import { ChannelProgramContextProvider } from './context/ChannelProgramsContext.tsx';
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ProgramContextProvider>
       <ChannelContextProvider>
-        <ChannelEpisodeContextProvider>
-          <App />
-        </ChannelEpisodeContextProvider>
+        <ChannelProgramContextProvider>
+          <ChannelEpisodeContextProvider>
+            <App />
+          </ChannelEpisodeContextProvider>
+        </ChannelProgramContextProvider>
       </ChannelContextProvider>
     </ProgramContextProvider>
   </React.StrictMode>

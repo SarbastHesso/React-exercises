@@ -41,6 +41,35 @@ export interface IEpisode {
   photographer: string | null;
 }
 
+interface IProgramCategory {
+  id: number;
+  name: string;
+}
+
+export interface IChannelProgram {
+  id: number;
+  name: string;
+  description: string;
+  programcategory: IProgramCategory;
+  payoff: string;
+  email: string;
+  phone: number | string | null;
+  programurl: string;
+  programslug: string;
+  programimage: string;
+  programimagetemplate: string;
+  programimagewide: string;
+  programimagetemplatewide: string;
+  socialimage: string;
+  socialimagetemplate: string;
+  socialmediaplatforms: ISocialmediaplatform[];
+  channel: IProgramschannel;
+  archived: boolean;
+  hasondemand: boolean;
+  haspod: boolean;
+  responsibleeditor: string;
+}
+
 
 interface ISocialmediaplatform {
   platform: string;
