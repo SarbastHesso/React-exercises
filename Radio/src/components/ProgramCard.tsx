@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { IProgram } from "../interfaces";
 
 interface IProgramCardProps {
@@ -7,9 +8,9 @@ interface IProgramCardProps {
 const ProgramCard = (props: IProgramCardProps) => {
   return (
     <div className="card" id={props.program.id.toString()}>
-      <div className="card-header">
+      <Link to={`/program/${props.program.id}`} className="card-header">
         <img src={props.program.programimage} alt="" />
-      </div>
+      </Link>
       <div className="card-body">
         <div className="title-favoeite-wrapper">
           <div className="title">

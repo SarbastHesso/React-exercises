@@ -1,0 +1,22 @@
+@use './colors' as *;
+.subroute-header {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid $light;
+    .subroute-title {
+        align-self: center;
+        font-size: 1.5rem;
+        color: $light;
+    }
+    .subroute-navbar {
+        display: flex;
+        align-items: center;
+        .subroute-navlink {
+            color: $light;
+            padding: 1rem;
+            text-decoration: none;
+        }
+    }
+}

@@ -6,6 +6,8 @@ import ProgramsList from './views/ProgramsList';
 import ChannelLayout from './components/ChannelLayout';
 import ChannelScheduledEpisodes from './views/ChannelScheduledEpisodes';
 import ChannelPrograms from './views/ChannelPrograms';
+import ProgramLayout from './components/ProgramLayout';
+import ProgramInfo from './views/ProgramInfo';
 
 
 function App() {
@@ -14,13 +16,18 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
-        <Route path="channels" element={<ChannelsList/>} />
+        <Route path="channels" element={<ChannelsList />} />
         <Route path="channel/:channelId" element={<ChannelLayout />}>
           <Route index element={<ChannelScheduledEpisodes />} />
           <Route path="episodes" element={<ChannelScheduledEpisodes />} />
           <Route path="programs" element={<ChannelPrograms />} />
         </Route>
-        <Route path="programs" element={<ProgramsList/>}/>
+        <Route path="programs" element={<ProgramsList />} />
+        <Route path="program/:programId" element={<ProgramLayout />}>
+          <Route index element={<ProgramInfo />} />
+          <Route path="info" element={<ProgramInfo />} />
+          {/* <Route path="programs" element={<ChannelPrograms />} /> */}
+        </Route>
       </Route>
     )
   );
