@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import ChannelHeader from "../views/ChannelHeader";
+import ChannelHeader from "./ChannelHeader";
 
 const ChannelLayout = () => {
   return (

@@ -1,11 +1,15 @@
 @use './colors' as *;
 .channel-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     padding: 1rem 0;
     margin-bottom: 2rem;
     border-bottom: 1px solid $light;
+    .channel-title {
+        align-self: center;
+        font-size: 1.5rem;
+        color: $light;
+    }
     .channel-navbar {
         display: flex;
         align-items: center;
