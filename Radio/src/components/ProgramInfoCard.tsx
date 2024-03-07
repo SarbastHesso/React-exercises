@@ -31,15 +31,21 @@ const ProgramInfoCard = ({ program }: IProgramInfoCardProps) => {
       </div>
       <footer className="card-footer">
         <div className="socialmedia-icons">
-          <Link to={program.socialmediaplatforms[0].platformurl} target="blank">
-            <FontAwesomeIcon icon={faFacebook} className="socialmedia-icon" />
-          </Link>
-          <Link to={program.socialmediaplatforms[1].platformurl} target="blank">
-            <FontAwesomeIcon icon={faTwitter} className="socialmedia-icon" />
-          </Link>
-          <Link to={program.socialmediaplatforms[2].platformurl} target="blank">
-            <FontAwesomeIcon icon={faInstagram} className="socialmedia-icon" />
-          </Link>
+          {program.socialmediaplatforms && program.socialmediaplatforms[0] && (
+            <Link to={program.socialmediaplatforms[0].platformurl} target="blank">
+              <FontAwesomeIcon icon={faFacebook} className="socialmedia-icon" />
+            </Link>
+          )}
+          {program.socialmediaplatforms && program.socialmediaplatforms[1] && (
+            <Link to={program.socialmediaplatforms[1].platformurl} target="blank">
+              <FontAwesomeIcon icon={faTwitter} className="socialmedia-icon" />
+            </Link>
+          )}
+          {program.socialmediaplatforms && program.socialmediaplatforms[2] && (
+            <Link to={program.socialmediaplatforms[2].platformurl} target="blank">
+              <FontAwesomeIcon icon={faInstagram} className="socialmedia-icon" />
+            </Link>
+          )}
         </div>
       </footer>
     </div>

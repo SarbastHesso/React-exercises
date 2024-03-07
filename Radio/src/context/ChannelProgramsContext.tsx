@@ -1,8 +1,8 @@
 import { ReactElement, createContext, useEffect, useState } from "react";
-import { IChannelProgram } from "../interfaces";
+import { IProgram } from "../interfaces";
 
 interface IChannelEpisode {
-  programs: IChannelProgram[];
+  programs: IProgram[];
   programChannelId: (id: string) => void;
   currentProgramsPage: number;
   totalProgramsPages: number;
@@ -18,7 +18,7 @@ export const ChannelProgramContext = createContext({} as IChannelEpisode);
 export function ChannelProgramContextProvider({
   children,
 }: IChannelProgramContextProviderProps) {
-  const [programs, setPrograms] = useState<IChannelProgram[]>([]);
+  const [programs, setPrograms] = useState<IProgram[]>([]);
   const [channelId, setChannelId] = useState<string>("");
   const [currentProgramsPage, setCurrentProgramsPage] = useState<number>(1);
   const [totalProgramsPages, setTotalProgramsPages] = useState<number>(1);

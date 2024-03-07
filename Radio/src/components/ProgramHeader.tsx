@@ -1,33 +1,18 @@
+import { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
+import { ProgramInfoContext } from "../context/ProgramContext";
 
 const ProgramHeader = () => {
+  const { programId } = useParams();
 
-    const { programId } = useParams();
-
-    // const { channels } = useContext(ChannelContext);
-
-    // const [channelName, setChannelName] = useState<string>("");
-    // const [channelType, setChannelType] = useState<string>("");
-
-    // useEffect(() => {
-    //   if (channelId && channels) {
-    //     channels.map((channel) => {
-    //       if (channel.id.toString() === channelId) {
-    //         setChannelName(channel.name);
-    //         setChannelType(channel.channeltype);
-    //       }
-    //     });
-    //   }
-    // }, [channelId, channels]);
+  const { program } = useContext(ProgramInfoContext);
 
   return (
     <>
       <header className="subroute-header">
-        {/* <div className="subroute-title">
-          <h3>
-            {channelName}-{channelType}
-          </h3>
-        </div> */}
+        <div className="subroute-title">
+          <h3>{program?.name}</h3>
+        </div>
         <nav className="subroute-navbar">
           <Link to={`/program/${programId}/info`} className="subroute-navlink">
             Program

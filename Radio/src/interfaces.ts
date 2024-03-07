@@ -1,3 +1,5 @@
+
+
 interface ILiveaudio {
     id: number;
     statkey: string;
@@ -46,30 +48,6 @@ interface IProgramCategory {
   name: string;
 }
 
-export interface IChannelProgram {
-  id: number;
-  name: string;
-  description: string;
-  programcategory: IProgramCategory;
-  payoff: string;
-  email: string;
-  phone: number | string | null;
-  programurl: string;
-  programslug: string;
-  programimage: string;
-  programimagetemplate: string;
-  programimagewide: string;
-  programimagetemplatewide: string;
-  socialimage: string;
-  socialimagetemplate: string;
-  socialmediaplatforms: ISocialmediaplatform[];
-  channel: IProgramschannel;
-  archived: boolean;
-  hasondemand: boolean;
-  haspod: boolean;
-  responsibleeditor: string;
-}
-
 
 interface ISocialmediaplatform {
   platform: string;
@@ -85,9 +63,11 @@ export interface IProgram {
   id: number;
   name: string;
   description: string;
+  programcategory?: IProgramCategory;
   broadcastinfo: string;
+  payoff?: string;
   email: string;
-  phone: number | string | null;
+  phone?: number;
   programurl: string;
   programslug: string;
   programimage: string;
@@ -103,3 +83,49 @@ export interface IProgram {
   haspod: boolean;
   responsibleeditor: string;
 } 
+
+
+interface IPlaylist {
+  id: string;
+  url: string;
+  statkey: string;
+  duration: number;
+  publishdateutc?: string;
+}
+
+interface IBroadcastfile {
+  id: string;
+  url: string;
+  statkey: string;
+  duration: number;
+  publishdateutc?: string;
+}
+
+export interface IBroadcast {
+  id: string;
+  availablestoputc: string;
+  playlist: IPlaylist;
+  broadcastfiles: IBroadcastfile[];
+  title: string;
+  description: string;
+  broadcastdateutc: string;
+  totalduration: number;
+  image: string;
+}
+
+interface IPodProgram {
+  id: string;
+  name: string;
+}
+export interface IPodfile {
+  id: string;
+  url: string;
+  statkey: string;
+  duration: number;
+  publishdateutc: string;
+  title: string;
+  description: string;
+  filesizeinbytes: number;
+  program: IPodProgram;
+  availablefromutc: string;
+}

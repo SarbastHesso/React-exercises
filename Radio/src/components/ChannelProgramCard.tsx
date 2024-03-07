@@ -1,15 +1,16 @@
-import { IChannelProgram } from "../interfaces";
+import { Link } from "react-router-dom";
+import { IProgram } from "../interfaces";
 
 interface IChannelProgramCardProps {
-  program: IChannelProgram;
+  program: IProgram;
 }
 
 const ChannelProgramCard = ({ program }: IChannelProgramCardProps) => {
   return (
     <div className="card" id={program.id.toString()}>
-      <div className="card-header">
+      <Link to={`/program/${program.id}`} className="card-header">
         <img src={program.programimage} alt="" />
-      </div>
+      </Link>
       <div className="card-body">
         <div className="title-favoeite-wrapper">
           <div className="title">

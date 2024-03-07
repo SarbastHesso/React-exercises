@@ -8,7 +8,7 @@ import ChannelScheduledEpisodes from './views/ChannelScheduledEpisodes';
 import ChannelPrograms from './views/ChannelPrograms';
 import ProgramLayout from './components/ProgramLayout';
 import ProgramInfo from './views/ProgramInfo';
-import ProgramBrodcasts from './views/ProgramBrodcasts';
+import ProgramBroadcasts from './views/ProgramBroadcasts';
 import ProgramPod from './views/ProgramPod';
 
 
@@ -28,7 +28,7 @@ function App() {
         <Route path="program/:programId" element={<ProgramLayout />}>
           <Route index element={<ProgramInfo />} />
           <Route path="info" element={<ProgramInfo />} />
-          <Route path="broadcasts" element={<ProgramBrodcasts />} />
+          <Route path="broadcasts" element={<ProgramBroadcasts />} />
           <Route path="podfiles" element={<ProgramPod />} />
         </Route>
       </Route>

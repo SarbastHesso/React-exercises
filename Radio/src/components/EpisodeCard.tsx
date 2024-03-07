@@ -30,9 +30,8 @@ const EpisodeCard = ({episode}: IEpisodeCardProps) => {
 
 
   return (
-    // <div className="card" id={episode.episodeid}>
     <div className="card">
-      <div className="card-header">
+      <div className="card-header" style={{cursor: 'default'}}>
         <img src={episode.imageurl} alt="" />
       </div>
       <div className="card-body">
